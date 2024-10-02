@@ -1,4 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    
+        <!-- Adicione as permissões aqui, antes da tag <application> -->
+        <uses-permission android:name="android.permission.CAMERA"/>
+        <uses-permission android:name="android.permission.VIBRATE"/>
+        
     <application
         android:label="mile_express"
         android:name="${applicationName}"
