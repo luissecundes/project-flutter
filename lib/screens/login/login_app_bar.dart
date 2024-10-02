@@ -7,7 +7,7 @@ class LoginAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       title: const Text(
-        'Mile-Express',
+        '',
         style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
       ),
       backgroundColor: Colors.blue, // Cor do AppBar
