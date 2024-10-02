@@ -12,16 +12,18 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              'Bem-vindo à tela Home!',
-              style: TextStyle(fontSize: 20),
-            ),
-            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/settings');
+                Navigator.pushNamed(context, '/scan');
               },
-              child: const Text('Ir para Configurações'),
+              child: const Text('Scanear Código de Barras'),
+            ),
+            const SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/shipments');
+              },
+              child: const Text('Ver Remessa'),
             ),
           ],
         ),
