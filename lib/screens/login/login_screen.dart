@@ -30,69 +30,99 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Mile-Express'),
-        foregroundColor: Colors.white, // Define a cor do texto como branco
-        backgroundColor: Colors
-            .blue, // Você pode definir a cor do fundo do AppBar aqui também
+        title: const Text(
+          'Mile-Express',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
+        backgroundColor: Colors.blue, // Cor do AppBar
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Center(
-          child: Card(
-            elevation: 8,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  CustomTextField(
-                    controller: _usernameController,
-                    label: 'Usuário',
-                  ),
-                  const SizedBox(height: 16.0),
-                  CustomTextField(
-                    controller: _passwordController,
-                    label: 'Senha',
-                    obscureText: true,
-                  ),
-                  const SizedBox(height: 16.0),
-                  CustomElevatedButton(
-                    onPressed: () {
-                      if (_usernameController.text.isNotEmpty &&
-                          _passwordController.text.isNotEmpty) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Login bem-sucedido!')),
-                        );
-                      } else {
-                        showDialog(
-                          context: context,
-                          builder: (context) {
-                            return AlertDialog(
-                              title: const Text('Erro'),
-                              content: const Text(
-                                  'Por favor, preencha todos os campos.'),
-                              actions: [
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                  child: const Text('OK'),
-                                ),
-                              ],
-                            );
-                          },
-                        );
-                      }
-                    },
-                  ),
-                ],
+      body: Stack(
+        children: [
+          // Container de fundo com gradiente
+          Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Colors.blue, Colors.white],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
               ),
             ),
           ),
-        ),
+          // Centro do Card com os campos de entrada e botão
+          Center(
+            child: Card(
+              elevation: 8,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    CustomTextField(
+                      controller: _usernameController,
+                      label: 'Usuário',
+                    ),
+                    const SizedBox(height: 16.0),
+                    CustomTextField(
+                      controller: _passwordController,
+                      label: 'Senha',
+                      obscureText: true,
+                    ),
+                    const SizedBox(height: 16.0),
+                    CustomElevatedButton(
+                      onPressed: () {
+                        if (_usernameController.text.isNotEmpty &&
+                            _passwordController.text.isNotEmpty) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content: Text('Login bem-sucedido!')),
+                          );
+                        } else {
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                title: const Text('Erro'),
+                                content: const Text(
+                                    'Por favor, preencha todos os campos.'),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: const Text('OK'),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        }
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          // Imagem da logo na parte inferior, ajustando a altura
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const SizedBox(height: 20), // Ajuste essa altura conforme necessário
+                Image.asset(
+                  'assets/images/mile-logo.png', // Caminho para sua logo
+                  fit: BoxFit.contain,
+                  height: 50, // Ajuste a altura da logo conforme necessário
+                ),
+                const SizedBox(height: 20), // Espaço abaixo da logo
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
