@@ -3,6 +3,7 @@
         <!-- Adicione as permissões aqui, antes da tag <application> -->
         <uses-permission android:name="android.permission.CAMERA"/>
         <uses-permission android:name="android.permission.VIBRATE"/>
+        <uses-permission android:name="android.permission.FLASHLIGHT"/>
         
     <application
         android:label="mile_express"
